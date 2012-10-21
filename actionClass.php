@@ -11,8 +11,8 @@ class action{
 	var $arm;
 	var $jump;
 	var $speed;
-    var $skill1;
-    var $skill2;
+    	var $skill1;
+    	var $skill2;
 	function set($name, $arm, $jump, $speed)
 	{
 		$this->name = $name;
@@ -26,8 +26,8 @@ class action{
 		}
 		$this->jump = (int)$jump;
 		$this->speed = (int)$speed;
-        $this->skill1 = (int)rand(0,100);
-        $this->skill2 = (int)rand(0,100);
+        	$this->skill1 = (int)rand(0,100);
+        	$this->skill2 = (int)rand(0,100);
 	}
 	function runup()
 	{
@@ -47,7 +47,7 @@ class action{
 		}else{
 			$perfect = false;
 		}
-        return $perfect;
+        	return $perfect;
 	}
 	function display()
 	{
@@ -63,7 +63,7 @@ class action{
             </p>';
 		
 		}
-        return $say.'
+        	return $say.'
             <p>
                 Skill One '.($this->speed).' / '.($this->skill1).'
             </p>
