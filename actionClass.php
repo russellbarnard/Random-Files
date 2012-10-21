@@ -48,10 +48,10 @@ class action{
 	{
 		if( $this->jump == true)
 		{
-			return '<strong>The ball was delivered {$this->arm} handed by {$this->name} with great skill!</strong>';
+			return '<strong>The ball was delivered '.$this->arm.' handed by '.$this->name.' with great skill!</strong>';
 		}else if( $this->jump == false )
 		{
-			return '<strong>The ball was delivered {$this->arm} handed by {$this->name} with little skill!</strong>';
+			return '<strong>The ball was delivered '.$this->arm.' handed by '.$this->name.' with little skill!</strong>';
 		
 		}
 	}
@@ -65,7 +65,7 @@ class action{
 
 $bowler = new action;
 $bowler->set('Steven Finn', 'r', 10, 90);
-$bowler->display();
+echo $bowler->display();
 
 
 ?>
