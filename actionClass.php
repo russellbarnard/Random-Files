@@ -11,6 +11,8 @@ class action{
 	var $arm;
 	var $jump;
 	var $speed;
+    var $skill1;
+    var $skill2;
 	function set($name, $arm, $jump, $speed)
 	{
 		$this->name = $name;
@@ -24,10 +26,12 @@ class action{
 		}
 		$this->jump = (int)$jump;
 		$this->speed = (int)$speed;
+        $this->skill1 = (int)rand(0,100);
+        $this->skill2 = (int)rand(0,100);
 	}
 	function runup()
 	{
-		if( $this->speed < rand(0,100) )
+		if( $this->speed > $this->skill1 )
 		{
 			$smooth = true;
 		}else{
@@ -37,23 +41,35 @@ class action{
 	}
 	function jump()
 	{
-		if( $this->runup() == true && $this->jump < rand(0,100) )
+		if( $this->runup() == true && $this->jump > $this->skill2 )
 		{
 			$perfect = true;
 		}else{
 			$perfect = false;
 		}
+        return $perfect;
 	}
 	function display()
 	{
 		if( $this->jump == true)
 		{
-			return '<strong>The ball was delivered '.$this->arm.' handed by '.$this->name.' with great skill!</strong>';
+			$say = '<p>
+                <strong>The ball was delivered '.$this->arm.' handed by '.$this->name.' with great skill!</strong>
+            </p>';
 		}else if( $this->jump == false )
 		{
-			return '<strong>The ball was delivered '.$this->arm.' handed by '.$this->name.' with little skill!</strong>';
+			$say = '<p>
+                <strong>The ball was delivered '.$this->arm.' handed by '.$this->name.' with little skill!</strong>
+            </p>';
 		
 		}
+        return $say.'
+            <p>
+                Skill One '.($this->speed).' / '.($this->skill1).'
+            </p>
+            <p>
+                Skill Two '.($this->jump).' / '.($this->skill2).'
+            </p>';
 	}
 }
 
@@ -64,7 +80,7 @@ class action{
 #############################
 
 $bowler = new action;
-$bowler->set('Steven Finn', 'r', 10, 90);
+$bowler->set('Steven Finn', 'r', rand(0,100), rand(0,100));
 echo $bowler->display();
 
 
